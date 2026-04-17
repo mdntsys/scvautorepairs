@@ -7,14 +7,26 @@ const FROM_ADDRESS = "SCV Auto Repairs <contact@scvautorepairs.com>";
 export async function POST(req: NextRequest) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const { firstName, lastName, phone, email, message } = await req.json();
+    const body = await req.json();
 
-    if (!firstName || !email || !message) {
+    // Support both the quick form (fullName + serviceRequested)
+    // and the detailed contact page form (firstName + lastName + message)
+    const fullName = body.fullName || `${body.firstName || ""} ${body.lastName || ""}`.trim();
+    const { phone, email } = body;
+    const details = body.serviceRequested
+      ? `Service Requested: ${body.serviceRequested}`
+      : body.message || "";
+
+    if (!fullName || !email || !details) {
       return NextResponse.json(
-        { error: "First name, email, and message are required." },
+        { error: "Name, email, and service/message are required." },
         { status: 400 }
       );
     }
+
+    // Aliases for email templates
+    const firstName = fullName.split(" ")[0];
+    const message = details;
 
     // Send both emails in parallel
     const [ownerResult, customerResult] = await Promise.all([
@@ -23,7 +35,7 @@ export async function POST(req: NextRequest) {
         from: FROM_ADDRESS,
         to: [OWNER_EMAIL],
         replyTo: email,
-        subject: `New inquiry from ${firstName} ${lastName}`,
+        subject: `New inquiry from ${fullName}`,
         html: `
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #0a0a0a; color: #f5f5f5; border-radius: 8px;">
             <div style="border-bottom: 2px solid #dc2626; padding-bottom: 16px; margin-bottom: 24px;">
@@ -34,7 +46,7 @@ export async function POST(req: NextRequest) {
             <table style="width: 100%; border-collapse: collapse;">
               <tr>
                 <td style="padding: 8px 0; color: #737373; font-size: 13px; width: 120px;">Name</td>
-                <td style="padding: 8px 0; color: #f5f5f5; font-size: 14px;">${firstName} ${lastName}</td>
+                <td style="padding: 8px 0; color: #f5f5f5; font-size: 14px;">${fullName}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; color: #737373; font-size: 13px;">Email</td>
@@ -52,7 +64,7 @@ export async function POST(req: NextRequest) {
             </div>
 
             <p style="margin-top: 24px; font-size: 12px; color: #444;">
-              Reply directly to this email to respond to ${firstName}.
+              Reply directly to this email to respond to ${fullName}.
             </p>
           </div>
         `,

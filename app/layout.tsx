@@ -3,6 +3,7 @@ import { Outfit, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ContactSection from "@/components/ContactSection";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -50,6 +51,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-bg text-text">
         <Navbar />
         <main className="flex-1">{children}</main>
+        <ContactSection />
         <Footer />
       </body>
     </html>
