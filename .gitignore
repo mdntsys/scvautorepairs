@@ -43,8 +43,3 @@ next-env.d.ts
 # Root-level source assets (served from /public)
 /scvautorepairs_hero_video.mp4
 /scvautorepairs_logo.png
-
-# Claude Code project files
-CLAUDE.md
-AGENTS.md
-.claude/
