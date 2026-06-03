@@ -20,6 +20,7 @@ export default function ContactForm() {
       phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+      company: (form.elements.namedItem("company") as HTMLInputElement).value,
     };
 
     try {
@@ -67,6 +68,16 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      {/* Honeypot — hidden from real users, catches bots that auto-fill fields */}
+      <input
+        type="text"
+        name="company"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+      />
+
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor="firstName" className="block text-sm font-medium text-[#ccc] mb-2">

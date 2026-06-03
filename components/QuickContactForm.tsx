@@ -36,6 +36,7 @@ export default function QuickContactForm({ variant = "section" }: QuickContactFo
       phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
       serviceRequested: (form.elements.namedItem("serviceRequested") as HTMLInputElement).value,
+      company: (form.elements.namedItem("company") as HTMLInputElement).value,
     };
 
     try {
@@ -78,6 +79,16 @@ export default function QuickContactForm({ variant = "section" }: QuickContactFo
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
+      {/* Honeypot — hidden from real users, catches bots that auto-fill fields */}
+      <input
+        type="text"
+        name="company"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+      />
+
       <div>
         <label htmlFor={`fullName-${variant}`} className={labelClass}>Full Name</label>
         <input

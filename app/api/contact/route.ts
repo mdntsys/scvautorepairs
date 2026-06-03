@@ -9,6 +9,13 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const body = await req.json();
 
+    // Honeypot: a hidden "company" field that real users never see or fill.
+    // Bots auto-fill it, so a non-empty value means it's spam. We pretend the
+    // submission succeeded but send nothing.
+    if (body.company) {
+      return NextResponse.json({ success: true });
+    }
+
     // Support both the quick form (fullName + serviceRequested)
     // and the detailed contact page form (firstName + lastName + message)
     const fullName = body.fullName || `${body.firstName || ""} ${body.lastName || ""}`.trim();
@@ -24,19 +31,18 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Aliases for email templates
-    const firstName = fullName.split(" ")[0];
+    // Alias for email template
     const message = details;
 
-    // Send both emails in parallel
-    const [ownerResult, customerResult] = await Promise.all([
-      // 1. Notify the owner
-      resend.emails.send({
-        from: FROM_ADDRESS,
-        to: [OWNER_EMAIL],
-        replyTo: email,
-        subject: `New inquiry from ${fullName}`,
-        html: `
+    // Notify the owner only. We intentionally do NOT send a confirmation
+    // email to the submitter's address — that allowed attackers to abuse
+    // our Resend domain as a relay to send mail to arbitrary recipients.
+    const ownerResult = await resend.emails.send({
+      from: FROM_ADDRESS,
+      to: [OWNER_EMAIL],
+      replyTo: email,
+      subject: `New inquiry from ${fullName}`,
+      html: `
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #0a0a0a; color: #f5f5f5; border-radius: 8px;">
             <div style="border-bottom: 2px solid #dc2626; padding-bottom: 16px; margin-bottom: 24px;">
               <h1 style="margin: 0; color: #fff; font-size: 22px;">New Website Inquiry</h1>
@@ -68,56 +74,10 @@ export async function POST(req: NextRequest) {
             </p>
           </div>
         `,
-      }),
+    });
 
-      // 2. Thank-you confirmation to the customer
-      resend.emails.send({
-        from: FROM_ADDRESS,
-        to: [email],
-        subject: `We received your message — SCV Auto Repairs`,
-        html: `
-          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #0a0a0a; color: #f5f5f5; border-radius: 8px;">
-            <div style="border-bottom: 2px solid #dc2626; padding-bottom: 16px; margin-bottom: 24px;">
-              <h1 style="margin: 0; color: #fff; font-size: 22px;">Thanks for reaching out, ${firstName}!</h1>
-              <p style="margin: 6px 0 0; color: #737373; font-size: 14px;">SCV Auto Repairs · Santa Clarita, CA</p>
-            </div>
-
-            <p style="font-size: 15px; line-height: 1.7; color: #ccc; margin: 0 0 16px;">
-              We've received your message and will be in touch with you shortly. Our team typically
-              responds within one business day.
-            </p>
-
-            <p style="font-size: 15px; line-height: 1.7; color: #ccc; margin: 0 0 24px;">
-              If you need immediate assistance, give us a call — we're happy to help right away.
-            </p>
-
-            <a href="tel:6612512515" style="display: inline-block; background: #dc2626; color: #fff; font-weight: 600; font-size: 14px; text-decoration: none; padding: 12px 24px; border-radius: 6px;">
-              Call 661-251-2515
-            </a>
-
-            <div style="margin-top: 32px; border-top: 1px solid #1a1a1a; padding-top: 20px;">
-              <p style="margin: 0 0 4px; font-size: 13px; color: #737373;">
-                📍 20723 Soledad Canyon Rd, Santa Clarita, CA 91351
-              </p>
-              <p style="margin: 0 0 4px; font-size: 13px; color: #737373;">
-                🕐 Monday–Friday 7:30 AM – 4:00 PM
-              </p>
-              <p style="margin: 0; font-size: 13px; color: #737373;">
-                ✉️ contact@scvautorepairs.com
-              </p>
-            </div>
-
-            <p style="margin-top: 24px; font-size: 11px; color: #333;">
-              You're receiving this because you submitted a contact form at scvautorepairs.com.
-            </p>
-          </div>
-        `,
-      }),
-    ]);
-
-    if (ownerResult.error || customerResult.error) {
-      const err = ownerResult.error || customerResult.error;
-      console.error("Resend error:", err);
+    if (ownerResult.error) {
+      console.error("Resend error:", ownerResult.error);
       return NextResponse.json(
         { error: "Failed to send message. Please call us at 661-251-2515." },
         { status: 500 }
