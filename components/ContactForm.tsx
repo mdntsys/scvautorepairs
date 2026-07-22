@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { BUSINESS } from "@/lib/business";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
@@ -54,7 +55,7 @@ export default function ContactForm() {
         <h3 className="font-heading font-bold text-xl text-white mb-2">Message Sent!</h3>
         <p className="text-muted text-sm mb-5">
           We&apos;ll get back to you as soon as possible. For urgent matters, call us at{" "}
-          <a href="tel:6612512515" className="text-accent">661-251-2515</a>.
+          <a href={BUSINESS.phone.href} className="text-accent">{BUSINESS.phone.display}</a>.
         </p>
         <button
           onClick={() => setState("idle")}

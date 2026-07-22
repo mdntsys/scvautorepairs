@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact Our Santa Clarita Auto Shop",
   description:
-    "Contact SCV Auto Repairs in Santa Clarita, CA. Call 661-251-2515 or send a message. We're open Monday–Friday 7:30 AM – 4:00 PM.",
+    "Contact SCV Auto Repairs on Soledad Canyon Rd in Canyon Country, Santa Clarita, CA. Call 661-251-2515. Open Monday to Friday, 7:30 AM to 4:00 PM.",
   alternates: { canonical: "/contact-us" },
 };
 
@@ -28,7 +28,7 @@ export default function ContactPage() {
             Get in Touch
           </p>
           <h1 className="font-heading font-extrabold text-5xl md:text-6xl tracking-tighter text-white mb-4">
-            Contact Us
+            Contact Our Santa Clarita Auto Shop
           </h1>
           <p className="text-muted max-w-lg">
             Have a question or ready to schedule service? Reach out by phone or send us a
@@ -48,7 +48,7 @@ export default function ContactPage() {
               </h2>
               <div className="space-y-4">
                 <a
-                  href="tel:6612512515"
+                  href="tel:+16612512515"
                   className="flex items-center gap-4 p-4 bg-[#111111] border border-[#1e1e1e] rounded-lg hover:border-accent/40 transition-colors group"
                 >
                   <div className="w-10 h-10 rounded bg-accent/10 flex items-center justify-center shrink-0">

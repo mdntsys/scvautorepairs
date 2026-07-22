@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import QuickContactForm from "@/components/QuickContactForm";
+import { BUSINESS, FULL_ADDRESS } from "@/lib/business";
 
 export default function ContactSection() {
   const ref = useRef(null);
@@ -34,7 +35,7 @@ export default function ContactSection() {
 
             <div className="space-y-4">
               <a
-                href="tel:6612512515"
+                href={BUSINESS.phone.href}
                 className="flex items-center gap-4 group"
               >
                 <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center shrink-0 group-hover:bg-accent/20 transition-colors">
@@ -44,7 +45,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-xs text-muted mb-0.5">Call us directly</p>
-                  <p className="text-white font-medium text-sm group-hover:text-accent transition-colors">661-251-2515</p>
+                  <p className="text-white font-medium text-sm group-hover:text-accent transition-colors">{BUSINESS.phone.display}</p>
                 </div>
               </a>
 
@@ -56,7 +57,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-xs text-muted mb-0.5">Business hours</p>
-                  <p className="text-white font-medium text-sm">Mon–Fri · 7:30 AM – 4:00 PM</p>
+                  <p className="text-white font-medium text-sm">{BUSINESS.hours.display}</p>
                 </div>
               </div>
 
@@ -69,7 +70,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-xs text-muted mb-0.5">Location</p>
-                  <p className="text-white font-medium text-sm">20723 Soledad Canyon Rd, Santa Clarita</p>
+                  <p className="text-white font-medium text-sm">{FULL_ADDRESS}</p>
                 </div>
               </div>
             </div>

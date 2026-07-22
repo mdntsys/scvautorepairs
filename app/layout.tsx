@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactSection from "@/components/ContactSection";
+import StructuredData from "@/components/StructuredData";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -52,6 +53,7 @@ export default function RootLayout({
       className={`${outfit.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-text">
+        <StructuredData />
         <Navbar />
         <main className="flex-1">{children}</main>
         <ContactSection />

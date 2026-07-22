@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import { BUSINESS, FULL_ADDRESS } from "@/lib/business";
 
 export default function CTABanner() {
   const ref = useRef(null);
@@ -25,15 +26,15 @@ export default function CTABanner() {
               Schedule Your Service Today
             </h2>
             <p className="text-muted text-sm mt-2">
-              Mon–Fri 7:30 AM – 4:00 PM · 20723 Soledad Canyon Rd, Santa Clarita, CA 91351
+              {BUSINESS.hours.display} · {FULL_ADDRESS}
             </p>
           </div>
           <div className="flex flex-wrap gap-3 shrink-0">
             <a
-              href="tel:6612512515"
+              href={BUSINESS.phone.href}
               className="bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3 rounded text-sm transition-all active:-translate-y-px"
             >
-              Call 661-251-2515
+              Call {BUSINESS.phone.display}
             </a>
             <Link
               href="/contact-us"

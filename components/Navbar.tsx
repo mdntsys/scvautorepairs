@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { BUSINESS } from "@/lib/business";
 
 const services = [
   { label: "Routine Maintenance", href: "/routine-maintenance" },
@@ -141,13 +142,13 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-4">
           <a
-            href="tel:6612512515"
+            href={BUSINESS.phone.href}
             className="text-sm font-medium text-muted hover:text-text transition-colors"
           >
-            661-251-2515
+            {BUSINESS.phone.display}
           </a>
           <a
-            href="tel:6612512515"
+            href={BUSINESS.phone.href}
             className="bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-4 py-2 rounded transition-all active:-translate-y-px"
           >
             Call Now
@@ -205,10 +206,10 @@ export default function Navbar() {
                 </Link>
               ))}
               <a
-                href="tel:6612512515"
+                href={BUSINESS.phone.href}
                 className="mt-4 bg-accent text-white text-sm font-semibold px-4 py-3 rounded text-center"
               >
-                Call 661-251-2515
+                Call {BUSINESS.phone.display}
               </a>
             </div>
           </motion.div>

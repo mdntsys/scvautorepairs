@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import ServicePageLayout from "@/components/ServicePageLayout";
 
 export const metadata: Metadata = {
-  title: "Routine Maintenance",
+  title: "Oil Change & Maintenance, Santa Clarita",
   description:
-    "Keep your vehicle running at its best with routine maintenance services in Santa Clarita, CA. Oil changes, fluid checks, filters, and scheduled services by ASE-certified mechanics.",
+    "Oil changes, fluid checks, filters, and 30K/60K/90K scheduled maintenance in Santa Clarita, CA by ASE-certified mechanics. Call 661-251-2515.",
   alternates: { canonical: "/routine-maintenance" },
 };
 
 export default function RoutineMaintenancePage() {
   return (
     <ServicePageLayout
-      subtitle="Santa Clarita, CA"
-      title="Routine Maintenance"
+      subtitle="ASE-Certified · 3-Year/36,000-Mile Warranty"
+      title="Routine Maintenance in Santa Clarita, CA"
       description="Regular maintenance is the key to a long-lasting, reliable vehicle. At SCV Auto Repairs, our ASE-certified mechanics follow manufacturer guidelines for all makes and models — including hybrid and electric vehicles — using OEM-quality parts. From quick oil changes to comprehensive 90K services, we keep you on schedule so your vehicle keeps running at its best."
       services={[
         "Oil and filter changes",

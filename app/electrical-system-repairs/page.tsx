@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import ServicePageLayout from "@/components/ServicePageLayout";
 
 export const metadata: Metadata = {
-  title: "Electrical System Repairs",
+  title: "Auto Electrical Repair, Santa Clarita",
   description:
-    "Expert auto electrical repair in Santa Clarita, CA. Battery, alternator, starter motor, wiring harness, and EV/hybrid electrical repairs by ASE-certified mechanics.",
+    "Auto electrical repair in Santa Clarita, CA. Batteries, alternators, starters, wiring, and hybrid/EV electrical systems. Call 661-251-2515.",
   alternates: { canonical: "/electrical-system-repairs" },
 };
 
 export default function ElectricalSystemPage() {
   return (
     <ServicePageLayout
-      subtitle="Powering Your Vehicle in Santa Clarita, CA"
-      title="Electrical System Repairs"
+      subtitle="ASE-Certified · 3-Year/36,000-Mile Warranty"
+      title="Auto Electrical Repair in Santa Clarita, CA"
       description="Modern vehicles rely on complex electrical systems to start, run, and keep you safe. From a dead battery to a failing alternator or a mysterious short circuit, SCV Auto Repairs uses advanced diagnostic tools to pinpoint issues fast. Our ASE-certified mechanics handle all electrical repairs — including hybrid and electric vehicles — with OEM-quality parts."
       services={[
         "Battery testing and replacement",

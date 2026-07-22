@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import ServicePageLayout from "@/components/ServicePageLayout";
 
 export const metadata: Metadata = {
-  title: "Tire Services",
+  title: "Tire Shop in Santa Clarita, CA",
   description:
-    "Expert tire services in Santa Clarita, CA. Rotation, balancing, flat repair, TPMS diagnostics, wheel alignment, and installation by ASE-certified mechanics.",
+    "Tire service in Santa Clarita, CA. Rotation, balancing, flat repair, TPMS diagnostics, wheel alignment, and new tire installation. 661-251-2515.",
   alternates: { canonical: "/tires" },
 };
 
 export default function TiresPage() {
   return (
     <ServicePageLayout
-      subtitle="Tire Services in Santa Clarita, CA"
-      title="Tire Services"
+      subtitle="ASE-Certified · 3-Year/36,000-Mile Warranty"
+      title="Tire Service in Santa Clarita, CA"
       description="Your tires are the only thing between your vehicle and the road. At SCV Auto Repairs, we provide comprehensive tire services — from quick rotations to full replacements — using advanced equipment and genuine expertise. Properly maintained tires improve safety, fuel economy, and handling on every road in the Santa Clarita Valley."
       services={[
         "Tire rotation and balancing",

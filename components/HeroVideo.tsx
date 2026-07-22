@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import QuickContactForm from "@/components/QuickContactForm";
+import { BUSINESS } from "@/lib/business";
 
 export default function HeroVideo() {
   return (
@@ -48,11 +49,24 @@ export default function HeroVideo() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-heading font-extrabold text-5xl md:text-6xl xl:text-7xl tracking-tighter leading-none text-white mb-6"
             >
-              Complete Vehicle
-              <br />
-              <span className="text-accent">Services</span> &amp;
-              <br />
-              Repairs
+              {/* Block spans rather than <br/> — a <br/> contributes no
+                  whitespace when text is extracted, so this previously read as
+                  "Complete VehicleServices&Repairs" to crawlers and AI. */}
+              {/* The {" "} between lines is load-bearing. These spans are
+                  display:block, so browsers insert breaks — but a crawler that
+                  strips tags without applying CSS would otherwise read
+                  "Complete VehicleServices & Repairsin Santa Clarita, CA".
+                  The spaces collapse to nothing visually between block elements. */}
+              <span className="block">Complete Vehicle</span>{" "}
+              <span className="block">
+                {/* Explicit string, not `</span> &amp; Repairs` — JSX drops the
+                    space before the entity and it renders as "Services& Repairs". */}
+                <span className="text-accent">Services</span>
+                {" & Repairs"}
+              </span>{" "}
+              <span className="block text-2xl md:text-3xl xl:text-4xl tracking-tight text-[#a0a0a0] mt-4">
+                in Santa Clarita, CA
+              </span>
             </motion.h1>
 
             {/* Subheading */}
@@ -75,10 +89,10 @@ export default function HeroVideo() {
               className="flex flex-wrap gap-3"
             >
               <a
-                href="tel:6612512515"
+                href={BUSINESS.phone.href}
                 className="bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3 rounded text-sm transition-all active:-translate-y-px"
               >
-                Call 661-251-2515
+                Call {BUSINESS.phone.display}
               </a>
               <Link
                 href="/services"

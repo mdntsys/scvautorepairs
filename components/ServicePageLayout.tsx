@@ -1,7 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import CTABanner from "@/components/CTABanner";
+import { BUSINESS, CITY_STATE_ZIP } from "@/lib/business";
+import { BUSINESS_ID } from "@/components/StructuredData";
 
 interface FAQ {
   q: string;
@@ -23,8 +26,67 @@ export default function ServicePageLayout({
   services,
   faqs,
 }: ServicePageLayoutProps) {
+  const pathname = usePathname();
+  const pageUrl = `${BUSINESS.url}${pathname}`;
+
+  // Service + breadcrumb + FAQ markup, derived from the props each service page
+  // already passes. This is a client component, but Next still renders it on the
+  // server, so the JSON-LD lands in the initial HTML where crawlers can read it.
+  const serviceGraph = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": `${pageUrl}#service`,
+        name: title,
+        serviceType: title,
+        description,
+        provider: { "@id": BUSINESS_ID },
+        areaServed: BUSINESS.areaServed.map((name) => ({
+          "@type": "Place",
+          name,
+        })),
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: `${title} — services included`,
+          itemListElement: services.map((s) => ({
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: s },
+          })),
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${BUSINESS.url}/` },
+          { "@type": "ListItem", position: 2, name: "Services", item: `${BUSINESS.url}/services` },
+          { "@type": "ListItem", position: 3, name: title },
+        ],
+      },
+      ...(faqs?.length
+        ? [
+            {
+              "@type": "FAQPage",
+              "@id": `${pageUrl}#faq`,
+              mainEntity: faqs.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            },
+          ]
+        : []),
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceGraph) }}
+      />
+
       {/* Hero */}
       <section className="bg-[#0c0c0c] border-b border-[#1a1a1a] pt-32 pb-16 px-6">
         <div className="max-w-7xl mx-auto">
@@ -129,10 +191,10 @@ export default function ServicePageLayout({
                 Ready to book or have a question? Give us a call or stop by.
               </p>
               <a
-                href="tel:6612512515"
+                href={BUSINESS.phone.href}
                 className="block w-full text-center bg-accent hover:bg-accent-dark text-white font-semibold py-3 rounded text-sm transition-all active:-translate-y-px mb-3"
               >
-                Call 661-251-2515
+                Call {BUSINESS.phone.display}
               </a>
               <a
                 href="/contact-us"
@@ -150,9 +212,13 @@ export default function ServicePageLayout({
             >
               <h3 className="font-heading font-bold text-base text-white">Shop Info</h3>
               <div className="text-sm text-muted space-y-2">
-                <p>📍 20723 Soledad Canyon Rd<br />Santa Clarita, CA 91351</p>
-                <p>🕐 Mon–Fri: 7:30 AM – 4:00 PM</p>
-                <p>📞 661-251-2515</p>
+                <p>
+                  📍 {BUSINESS.address.street}
+                  <br />
+                  {CITY_STATE_ZIP}
+                </p>
+                <p>🕐 {BUSINESS.hours.display}</p>
+                <p>📞 {BUSINESS.phone.display}</p>
               </div>
             </motion.div>
 

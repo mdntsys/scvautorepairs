@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import ServicePageLayout from "@/components/ServicePageLayout";
 
 export const metadata: Metadata = {
-  title: "Transmission Services",
+  title: "Transmission Repair, Santa Clarita CA",
   description:
-    "Expert transmission repair in Santa Clarita, CA. Fluid flushes, leak repair, clutch replacement, automatic diagnostics, and transmission rebuilds by ASE-certified mechanics.",
+    "Transmission repair in Santa Clarita, CA. Fluid flushes, leak repair, clutch replacement, diagnostics, and rebuilds. Call 661-251-2515.",
   alternates: { canonical: "/transmission-services" },
 };
 
 export default function TransmissionServicesPage() {
   return (
     <ServicePageLayout
-      subtitle="Smooth Shifting With Expert Care in Santa Clarita"
-      title="Transmission Services"
+      subtitle="ASE-Certified · 3-Year/36,000-Mile Warranty"
+      title="Transmission Repair in Santa Clarita, CA"
       description="Transmission problems — slipping gears, delayed shifts, or unusual noises — rarely fix themselves. At SCV Auto Repairs, our ASE-certified mechanics have the tools and expertise to diagnose and repair both automatic and manual transmissions accurately. We use OEM-quality parts and back every repair with our 3-year/36,000-mile warranty."
       services={[
         "Transmission fluid flush and replacement",

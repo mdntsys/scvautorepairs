@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import { BUSINESS } from "@/lib/business";
 
 const services = [
   {
@@ -162,7 +163,7 @@ export default function ServicesSection() {
           className="mt-8 text-center text-sm text-muted"
         >
           Don&apos;t see your service?{" "}
-          <a href="tel:6612512515" className="text-accent hover:underline">
+          <a href={BUSINESS.phone.href} className="text-accent hover:underline">
             Call us
           </a>{" "}
           — we handle it all.

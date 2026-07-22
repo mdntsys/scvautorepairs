@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Customer Reviews",
+  title: "Santa Clarita Auto Repair Reviews",
   description:
     "Read what customers are saying about SCV Auto Repairs in Santa Clarita, CA. Honest, fair, and expert auto service by Pete and the team.",
   alternates: { canonical: "/reviews" },
@@ -63,7 +63,7 @@ export default function ReviewsPage() {
             What People Are Saying
           </p>
           <h1 className="font-heading font-extrabold text-5xl md:text-6xl tracking-tighter text-white mb-4">
-            Customer Reviews
+            Santa Clarita Auto Repair Reviews
           </h1>
           <p className="text-muted max-w-lg">
             SCV Auto Repairs has built a reputation on honesty, fair pricing, and expert
@@ -121,7 +121,7 @@ export default function ReviewsPage() {
               Hundreds of satisfied customers across the Santa Clarita Valley.
             </p>
             <a
-              href="tel:6612512515"
+              href="tel:+16612512515"
               className="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3 rounded text-sm transition-all"
             >
               Experience it yourself — Call 661-251-2515

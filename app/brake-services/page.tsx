@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import ServicePageLayout from "@/components/ServicePageLayout";
 
 export const metadata: Metadata = {
-  title: "Brake Services",
+  title: "Brake Repair in Santa Clarita, CA",
   description:
-    "Expert brake repair in Santa Clarita, CA. Pad replacements, rotor resurfacing, caliper repair, ABS diagnostics, and brake fluid flushes by ASE-certified mechanics.",
+    "Brake repair in Santa Clarita, CA. Pad replacement, rotors, calipers, ABS diagnostics, and fluid flushes by ASE-certified mechanics. Call 661-251-2515.",
   alternates: { canonical: "/brake-services" },
 };
 
 export default function BrakeServicesPage() {
   return (
     <ServicePageLayout
-      subtitle="Brake Repair in Santa Clarita, CA"
-      title="Brake Services"
+      subtitle="ASE-Certified · 3-Year/36,000-Mile Warranty"
+      title="Brake Repair in Santa Clarita, CA"
       description="Your brakes are your vehicle's most critical safety system. At SCV Auto Repairs, our ASE-certified mechanics handle every aspect of brake service — from routine pad replacements to complex ABS diagnostics — using OEM-quality parts. We work quickly and affordably to get you back on the road with full confidence in your stopping power."
       services={[
         "Brake pad replacement",

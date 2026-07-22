@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Photo Gallery",
+  title: "Our Santa Clarita Auto Repair Shop",
   description:
     "Photo gallery of SCV Auto Repairs in Santa Clarita, CA. See our shop, our work, and our ASE-certified team in action.",
   alternates: { canonical: "/photos" },
@@ -18,7 +18,7 @@ export default function PhotosPage() {
             Our Work
           </p>
           <h1 className="font-heading font-extrabold text-5xl md:text-6xl tracking-tighter text-white mb-4">
-            Photo Gallery
+            Inside Our Santa Clarita Auto Shop
           </h1>
           <p className="text-muted max-w-lg">
             A look inside SCV Auto Repairs — showcasing our expert auto care in Santa

@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import ServicePageLayout from "@/components/ServicePageLayout";
 
 export const metadata: Metadata = {
-  title: "Suspension & Steering",
+  title: "Suspension & Steering, Santa Clarita CA",
   description:
-    "Expert suspension and steering repair in Santa Clarita, CA. Shocks, struts, ball joints, wheel alignment, and steering rack repair by ASE-certified mechanics.",
+    "Suspension and steering repair in Santa Clarita, CA. Shocks, struts, ball joints, wheel alignment, and steering racks. Call 661-251-2515.",
   alternates: { canonical: "/suspension-and-steering" },
 };
 
 export default function SuspensionSteeringPage() {
   return (
     <ServicePageLayout
-      subtitle="Smooth Handling and Comfort in Santa Clarita"
-      title="Suspension & Steering Services"
+      subtitle="ASE-Certified · 3-Year/36,000-Mile Warranty"
+      title="Suspension & Steering in Santa Clarita, CA"
       description="A worn suspension affects not just comfort — it affects safety. From rough roads to sharp corners, your vehicle's suspension and steering components work together to keep you in control. SCV Auto Repairs uses advanced equipment and OEM-quality parts to restore precision handling and ride quality on all vehicle makes and models."
       services={[
         "Shock absorber replacement",

@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Auto Repair Services in Santa Clarita, CA",
   description:
     "Complete auto repair services in Santa Clarita, CA. Brakes, engine diagnostics, transmission, suspension, AC, tires, and more by ASE-certified mechanics.",
   alternates: { canonical: "/services" },
@@ -85,7 +85,7 @@ export default function ServicesPage() {
             Santa Clarita, CA
           </p>
           <h1 className="font-heading font-extrabold text-5xl md:text-6xl tracking-tighter text-white mb-4 max-w-2xl">
-            Our Services
+            Auto Repair Services in Santa Clarita
           </h1>
           <p className="text-muted text-lg max-w-xl">
             All vehicle makes and models, including hybrid and electric. ASE-certified mechanics using
@@ -137,7 +137,7 @@ export default function ServicesPage() {
               We handle it all. Give us a call and we&apos;ll let you know if we can help.
             </p>
             <a
-              href="tel:6612512515"
+              href="tel:+16612512515"
               className="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3 rounded text-sm transition-all"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import ServicePageLayout from "@/components/ServicePageLayout";
 
 export const metadata: Metadata = {
-  title: "Engine Diagnostics & Repair",
+  title: "Engine Diagnostics, Santa Clarita CA",
   description:
-    "Precision engine diagnostics and repair in Santa Clarita, CA. Check engine light, spark plugs, timing belt, head gasket, and engine rebuilds by ASE-certified mechanics.",
+    "Engine diagnostics and repair in Santa Clarita, CA. Check engine light, spark plugs, timing belts, head gaskets, and rebuilds. Call 661-251-2515.",
   alternates: { canonical: "/engine-diagnostics-and-repair" },
 };
 
 export default function EngineDiagnosticsPage() {
   return (
     <ServicePageLayout
-      subtitle="Precision Engine Solutions in Santa Clarita, CA"
-      title="Engine Diagnostics & Repair"
+      subtitle="ASE-Certified · 3-Year/36,000-Mile Warranty"
+      title="Engine Diagnostics & Repair in Santa Clarita, CA"
       description="When your check engine light comes on or your engine isn't performing like it should, you need mechanics you can trust. SCV Auto Repairs uses advanced diagnostic tools and deep expertise to identify issues fast and fix them right — from minor tune-ups to complete engine rebuilds — all with OEM-quality parts and our 3-year/36,000-mile warranty."
       services={[
         "Check engine light diagnostics",

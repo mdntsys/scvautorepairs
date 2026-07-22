@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import ServicePageLayout from "@/components/ServicePageLayout";
 
 export const metadata: Metadata = {
-  title: "AC & Heating Services",
+  title: "Car AC Repair in Santa Clarita, CA",
   description:
-    "Expert AC and heating repair in Santa Clarita, CA. Refrigerant recharge, compressor repair, heater core replacement, and climate control diagnostics by ASE-certified mechanics.",
+    "Car AC and heating repair in Santa Clarita, CA. Refrigerant recharge, compressors, heater cores, and climate control diagnostics. Call 661-251-2515.",
   alternates: { canonical: "/ac-and-heating" },
 };
 
 export default function AcHeatingPage() {
   return (
     <ServicePageLayout
-      subtitle="Comfort All Year Long in Santa Clarita, CA"
-      title="AC & Heating Services"
+      subtitle="ASE-Certified · 3-Year/36,000-Mile Warranty"
+      title="Car AC & Heating Repair in Santa Clarita, CA"
       description="Whether it's a scorching Santa Clarita summer or a cold winter morning, your vehicle's climate control system needs to work reliably. SCV Auto Repairs diagnoses and repairs all AC and heating issues — from refrigerant recharges to heater core replacements — keeping you comfortable in every season with OEM-quality parts."
       services={[
         "AC refrigerant recharge",

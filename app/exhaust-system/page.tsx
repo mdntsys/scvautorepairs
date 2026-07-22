@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import ServicePageLayout from "@/components/ServicePageLayout";
 
 export const metadata: Metadata = {
-  title: "Exhaust System Services",
+  title: "Exhaust & Muffler Repair, Santa Clarita",
   description:
-    "Expert exhaust system repair in Santa Clarita, CA. Muffler repair, catalytic converter replacement, exhaust pipe welding, and emission checks by ASE-certified mechanics.",
+    "Exhaust and muffler repair in Santa Clarita, CA. Catalytic converters, pipe welding, oxygen sensors, and emissions checks. Call 661-251-2515.",
   alternates: { canonical: "/exhaust-system" },
 };
 
 export default function ExhaustSystemPage() {
   return (
     <ServicePageLayout
-      subtitle="Quiet, Clean, and Efficient in Santa Clarita, CA"
-      title="Exhaust System Services"
+      subtitle="ASE-Certified · 3-Year/36,000-Mile Warranty"
+      title="Exhaust & Muffler Repair in Santa Clarita, CA"
       description="A failing exhaust system affects performance, fuel economy, and the air you breathe inside your vehicle. At SCV Auto Repairs, our ASE-certified mechanics diagnose and repair all exhaust system issues — from a loud muffler to a failing catalytic converter — using OEM-quality parts and precision welding equipment."
       services={[
         "Muffler repair and replacement",

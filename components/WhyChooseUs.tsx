@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { BUSINESS } from "@/lib/business";
 
 const reasons = [
   {
@@ -61,7 +62,7 @@ export default function WhyChooseUs() {
               can trust.
             </p>
             <a
-              href="tel:6612512515"
+              href={BUSINESS.phone.href}
               className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:underline"
             >
               Schedule a visit

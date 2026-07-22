@@ -7,9 +7,9 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "SCV Auto Repairs | Complete Vehicle Services in Santa Clarita, CA",
+  title: "Auto Repair in Santa Clarita, CA | SCV Auto Repairs",
   description:
-    "ASE-certified auto repair shop in Santa Clarita, CA. Expert brake service, engine diagnostics, oil changes, transmission, and more. 3-year/36,000-mile warranty. Call 661-251-2515.",
+    "ASE-certified auto repair in Canyon Country, Santa Clarita CA. Brakes, engine diagnostics, oil changes, tires. 3-year/36,000-mile warranty. 661-251-2515.",
   alternates: { canonical: "/" },
 };
 
