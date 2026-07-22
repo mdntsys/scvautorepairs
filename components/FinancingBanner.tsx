@@ -1,22 +1,21 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const SNAP_ALT =
   "Snap Finance — apply for financing on your auto repair. No credit needed.";
 
 export default function FinancingBanner() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
-    <section ref={ref} className="bg-[#0a0a0a] border-b border-[#1e1e1e]">
+    <section className="bg-[#0a0a0a] border-b border-[#1e1e1e]">
       <div className="max-w-7xl mx-auto px-6 py-8 md:py-12">
+        {/* Animates on mount rather than on scroll: the hero is capped at 880px,
+            so on taller screens this sits above the fold and needs to land as
+            the last beat of the hero's cascade (which ends at 0.7s). */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.85 }}
           className="flex flex-col items-center text-center"
         >
           <p className="text-xs uppercase tracking-widest text-accent font-semibold mb-1">
