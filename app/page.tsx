@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import HeroVideo from "@/components/HeroVideo";
+import FinancingBanner from "@/components/FinancingBanner";
 import ServicesSection from "@/components/ServicesSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -15,6 +16,7 @@ export default function HomePage() {
   return (
     <>
       <HeroVideo />
+      <FinancingBanner />
       <ServicesSection />
       <WhyChooseUs />
       <TestimonialsSection />
