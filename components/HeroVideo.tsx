@@ -6,7 +6,9 @@ import QuickContactForm from "@/components/QuickContactForm";
 
 export default function HeroVideo() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    // Full-bleed on normal screens, but capped so tall monitors don't stretch
+    // the hero into a wall of empty space above the fold.
+    <section className="relative min-h-[min(100svh,880px)] flex items-center overflow-hidden">
       {/* Video background */}
       <video
         autoPlay
@@ -137,21 +139,6 @@ export default function HeroVideo() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
-          className="w-5 h-8 rounded-full border border-white/20 flex justify-center pt-1.5"
-        >
-          <div className="w-1 h-1.5 rounded-full bg-white/40" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

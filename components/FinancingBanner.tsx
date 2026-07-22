@@ -12,7 +12,7 @@ export default function FinancingBanner() {
 
   return (
     <section ref={ref} className="bg-[#0a0a0a] border-b border-[#1e1e1e]">
-      <div className="max-w-7xl mx-auto px-6 py-10 md:py-12">
+      <div className="max-w-7xl mx-auto px-6 py-8 md:py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -27,22 +27,38 @@ export default function FinancingBanner() {
           </h2>
 
           {/* Snap Finance banners — mobile and desktop creatives have their own links */}
-          <a
-            href="https://snapf.in/syNsluQ"
-            target="_blank"
-            rel="noopener noreferrer sponsored"
-            className="block w-full max-w-[646px] rounded-md overflow-hidden shadow-lg shadow-black/60 transition-transform hover:-translate-y-0.5 md:hidden"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://merchant-banners-s3.snapfinance.com/Loans/EN/A646x80.jpeg"
-              alt={SNAP_ALT}
-              width={646}
-              height={80}
-              loading="lazy"
-              className="w-full h-auto"
-            />
-          </a>
+
+          {/* Mobile: the 646x80 creative scales down to ~50%, which leaves Snap's
+              fine print unreadable and the tap target under 44px. Keep the
+              creative for brand recognition, but pair it with a real button. */}
+          <div className="w-full md:hidden">
+            <a
+              href="https://snapf.in/syNsluQ"
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              aria-hidden="true"
+              tabIndex={-1}
+              className="block w-full max-w-[646px] mx-auto rounded-md overflow-hidden shadow-lg shadow-black/60"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://merchant-banners-s3.snapfinance.com/Loans/EN/A646x80.jpeg"
+                alt=""
+                width={646}
+                height={80}
+                loading="lazy"
+                className="w-full h-auto"
+              />
+            </a>
+            <a
+              href="https://snapf.in/syNsluQ"
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="mt-3 flex items-center justify-center w-full min-h-[48px] bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3 rounded text-sm transition-all active:-translate-y-px"
+            >
+              Apply with Snap Finance
+            </a>
+          </div>
 
           <a
             href="https://snapf.in/SdNfI7S"
