@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Transmission Services",
   description:
     "Expert transmission repair in Santa Clarita, CA. Fluid flushes, leak repair, clutch replacement, automatic diagnostics, and transmission rebuilds by ASE-certified mechanics.",
+  alternates: { canonical: "/transmission-services" },
 };
 
 export default function TransmissionServicesPage() {

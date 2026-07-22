@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Electrical System Repairs",
   description:
     "Expert auto electrical repair in Santa Clarita, CA. Battery, alternator, starter motor, wiring harness, and EV/hybrid electrical repairs by ASE-certified mechanics.",
+  alternates: { canonical: "/electrical-system-repairs" },
 };
 
 export default function ElectricalSystemPage() {

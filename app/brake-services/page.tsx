@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Brake Services",
   description:
     "Expert brake repair in Santa Clarita, CA. Pad replacements, rotor resurfacing, caliper repair, ABS diagnostics, and brake fluid flushes by ASE-certified mechanics.",
+  alternates: { canonical: "/brake-services" },
 };
 
 export default function BrakeServicesPage() {

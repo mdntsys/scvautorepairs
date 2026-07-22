@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Routine Maintenance",
   description:
     "Keep your vehicle running at its best with routine maintenance services in Santa Clarita, CA. Oil changes, fluid checks, filters, and scheduled services by ASE-certified mechanics.",
+  alternates: { canonical: "/routine-maintenance" },
 };
 
 export default function RoutineMaintenancePage() {

@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Contact Us",
   description:
     "Contact SCV Auto Repairs in Santa Clarita, CA. Call 661-251-2515 or send a message. We're open Monday–Friday 7:30 AM – 4:00 PM.",
+  alternates: { canonical: "/contact-us" },
 };
 
 const hours = [

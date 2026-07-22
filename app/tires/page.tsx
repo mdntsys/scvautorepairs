@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Tire Services",
   description:
     "Expert tire services in Santa Clarita, CA. Rotation, balancing, flat repair, TPMS diagnostics, wheel alignment, and installation by ASE-certified mechanics.",
+  alternates: { canonical: "/tires" },
 };
 
 export default function TiresPage() {

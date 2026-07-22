@@ -87,9 +87,15 @@ export default function Navbar() {
             onMouseEnter={() => setServicesOpen(true)}
             onMouseLeave={() => setServicesOpen(false)}
           >
-            <button
+            {/* A real link, not a button — /services was previously unreachable
+                from the server-rendered header. */}
+            <Link
+              href="/services"
+              aria-haspopup="true"
+              aria-expanded={servicesOpen}
+              onFocus={() => setServicesOpen(true)}
               className={`px-3 py-2 text-sm font-medium rounded transition-colors flex items-center gap-1 ${
-                pathname.startsWith("/") && services.some((s) => pathname === s.href)
+                pathname === "/services" || services.some((s) => pathname === s.href)
                   ? "text-accent"
                   : "text-muted hover:text-text"
               }`}
@@ -103,33 +109,32 @@ export default function Navbar() {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
-            </button>
+            </Link>
 
-            <AnimatePresence>
-              {servicesOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 8 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute top-full left-0 mt-1 w-64 bg-[#111111] border border-[#262626] rounded-lg overflow-hidden shadow-xl shadow-black/50"
+            {/* Always rendered so the 9 service links exist in the server HTML —
+                previously this was mounted on hover, leaving the footer as the
+                only crawlable path to them. Visibility, not mounting, is toggled. */}
+            <div
+              className={`absolute top-full left-0 mt-1 w-64 bg-[#111111] border border-[#262626] rounded-lg overflow-hidden shadow-xl shadow-black/50 transition-all duration-150 ${
+                servicesOpen
+                  ? "opacity-100 translate-y-0 visible"
+                  : "opacity-0 translate-y-2 invisible"
+              }`}
+            >
+              {services.map((service) => (
+                <Link
+                  key={service.href}
+                  href={service.href}
+                  className={`block px-4 py-2.5 text-sm transition-colors border-l-2 ${
+                    pathname === service.href
+                      ? "text-accent border-accent bg-[#1a1a1a]"
+                      : "text-muted border-transparent hover:text-text hover:border-accent hover:bg-[#1a1a1a]"
+                  }`}
                 >
-                  {services.map((service) => (
-                    <Link
-                      key={service.href}
-                      href={service.href}
-                      className={`block px-4 py-2.5 text-sm transition-colors border-l-2 ${
-                        pathname === service.href
-                          ? "text-accent border-accent bg-[#1a1a1a]"
-                          : "text-muted border-transparent hover:text-text hover:border-accent hover:bg-[#1a1a1a]"
-                      }`}
-                    >
-                      {service.label}
-                    </Link>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
+                  {service.label}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
 

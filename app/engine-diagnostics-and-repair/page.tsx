@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Engine Diagnostics & Repair",
   description:
     "Precision engine diagnostics and repair in Santa Clarita, CA. Check engine light, spark plugs, timing belt, head gasket, and engine rebuilds by ASE-certified mechanics.",
+  alternates: { canonical: "/engine-diagnostics-and-repair" },
 };
 
 export default function EngineDiagnosticsPage() {

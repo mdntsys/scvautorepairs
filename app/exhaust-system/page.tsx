@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Exhaust System Services",
   description:
     "Expert exhaust system repair in Santa Clarita, CA. Muffler repair, catalytic converter replacement, exhaust pipe welding, and emission checks by ASE-certified mechanics.",
+  alternates: { canonical: "/exhaust-system" },
 };
 
 export default function ExhaustSystemPage() {

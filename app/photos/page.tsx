@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Photo Gallery",
   description:
     "Photo gallery of SCV Auto Repairs in Santa Clarita, CA. See our shop, our work, and our ASE-certified team in action.",
+  alternates: { canonical: "/photos" },
 };
 
 export default function PhotosPage() {

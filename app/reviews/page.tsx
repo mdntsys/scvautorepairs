@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Customer Reviews",
   description:
     "Read what customers are saying about SCV Auto Repairs in Santa Clarita, CA. Honest, fair, and expert auto service by Pete and the team.",
+  alternates: { canonical: "/reviews" },
 };
 
 const reviews = [

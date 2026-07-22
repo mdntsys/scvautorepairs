@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "AC & Heating Services",
   description:
     "Expert AC and heating repair in Santa Clarita, CA. Refrigerant recharge, compressor repair, heater core replacement, and climate control diagnostics by ASE-certified mechanics.",
+  alternates: { canonical: "/ac-and-heating" },
 };
 
 export default function AcHeatingPage() {

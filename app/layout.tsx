@@ -18,6 +18,9 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  // Pinned to the canonical www host. Without this, Next falls back to Vercel's
+  // deploy URL, so canonicals and OG images silently change host on previews.
+  metadataBase: new URL("https://www.scvautorepairs.com"),
   title: {
     default: "SCV Auto Repairs | Santa Clarita, CA",
     template: "%s | SCV Auto Repairs",

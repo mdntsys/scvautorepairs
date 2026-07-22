@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "Complete auto repair services in Santa Clarita, CA. Brakes, engine diagnostics, transmission, suspension, AC, tires, and more by ASE-certified mechanics.",
+  alternates: { canonical: "/services" },
 };
 
 const services = [

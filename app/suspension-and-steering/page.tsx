@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Suspension & Steering",
   description:
     "Expert suspension and steering repair in Santa Clarita, CA. Shocks, struts, ball joints, wheel alignment, and steering rack repair by ASE-certified mechanics.",
+  alternates: { canonical: "/suspension-and-steering" },
 };
 
 export default function SuspensionSteeringPage() {
