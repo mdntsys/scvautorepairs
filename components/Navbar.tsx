@@ -21,6 +21,7 @@ const services = [
 
 const navLinks = [
   { label: "Home", href: "/" },
+  { label: "Financing", href: "/financing" },
   { label: "Photos", href: "/photos" },
   { label: "Reviews", href: "/reviews" },
   { label: "Contact", href: "/contact-us" },

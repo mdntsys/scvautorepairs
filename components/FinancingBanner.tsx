@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const SNAP_ALT =
   "Snap Finance — apply for financing on your auto repair. No credit needed.";
@@ -81,6 +82,12 @@ export default function FinancingBanner() {
             site in a new tab — approval and terms are set by Snap Finance, not
             SCV Auto Repairs.
           </p>
+          <Link
+            href="/financing"
+            className="text-accent hover:underline text-sm font-medium mt-3"
+          >
+            Learn more about financing at SCV Auto Repairs →
+          </Link>
         </motion.div>
       </div>
     </section>
