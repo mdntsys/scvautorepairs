@@ -18,6 +18,7 @@ const pages = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "Financing", href: "/financing" },
+  { label: "Blog", href: "/blog" },
   { label: "Photos", href: "/photos" },
   { label: "Reviews", href: "/reviews" },
   { label: "Contact Us", href: "/contact-us" },

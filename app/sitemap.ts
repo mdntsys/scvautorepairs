@@ -1,6 +1,11 @@
 import type { MetadataRoute } from "next";
+import { getPublishedPosts } from "@/lib/blog";
 
 const BASE_URL = "https://www.scvautorepairs.com";
+
+// Keep the sitemap in step with the blog drip: newly-published posts appear
+// here on the same revalidation as the rest of the blog surfaces.
+export const revalidate = 21600;
 
 const SERVICE_ROUTES = [
   "/routine-maintenance",
@@ -62,5 +67,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.5,
     },
+    {
+      url: `${BASE_URL}/blog`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.6,
+    },
+    ...getPublishedPosts().map((post) => ({
+      url: `${BASE_URL}/blog/${post.slug}`,
+      lastModified: new Date(`${post.publishDate}T00:00:00-07:00`),
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
+    })),
   ];
 }
