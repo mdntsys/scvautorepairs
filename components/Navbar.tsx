@@ -19,11 +19,12 @@ const services = [
   { label: "Tire Services", href: "/tires" },
 ];
 
+// Home is intentionally omitted — the logo links to "/". Services renders
+// first (as its own dropdown), so these follow it: Services, Reviews, Photos,
+// Contact. Financing lives in the footer and the homepage banner, not here.
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Financing", href: "/financing" },
-  { label: "Photos", href: "/photos" },
   { label: "Reviews", href: "/reviews" },
+  { label: "Photos", href: "/photos" },
   { label: "Contact", href: "/contact-us" },
 ];
 
@@ -67,22 +68,8 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Desktop Nav */}
+        {/* Desktop Nav — Services first, then the rest of navLinks */}
         <div className="hidden lg:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`px-3 py-2 text-sm font-medium rounded transition-colors ${
-                pathname === link.href
-                  ? "text-accent"
-                  : "text-muted hover:text-text"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
-
           {/* Services Dropdown */}
           <div
             className="relative"
@@ -138,6 +125,20 @@ export default function Navbar() {
               ))}
             </div>
           </div>
+
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`px-3 py-2 text-sm font-medium rounded transition-colors ${
+                pathname === link.href
+                  ? "text-accent"
+                  : "text-muted hover:text-text"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
 
         {/* Desktop CTA */}
@@ -181,18 +182,7 @@ export default function Navbar() {
             className="lg:hidden overflow-hidden bg-[#0a0a0a] border-b border-[#262626]"
           >
             <div className="px-6 py-4 flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`py-2.5 text-sm font-medium border-b border-[#1a1a1a] ${
-                    pathname === link.href ? "text-accent" : "text-muted"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <div className="py-2 text-xs uppercase tracking-widest text-[#555] mt-2">Services</div>
+              <div className="py-2 text-xs uppercase tracking-widest text-[#555]">Services</div>
               {services.map((service) => (
                 <Link
                   key={service.href}
@@ -204,6 +194,17 @@ export default function Navbar() {
                   }`}
                 >
                   {service.label}
+                </Link>
+              ))}
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`py-2.5 text-sm font-medium border-b border-[#1a1a1a] mt-1 ${
+                    pathname === link.href ? "text-accent" : "text-muted"
+                  }`}
+                >
+                  {link.label}
                 </Link>
               ))}
               <a
