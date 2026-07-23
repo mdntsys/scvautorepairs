@@ -33,10 +33,10 @@ const GEN_B_REDIRECTS = [
 
 // Gen A WordPress pages that still held rankings or backlinks when they died.
 const GEN_A_REDIRECTS = [
-  // Ranked for ~340/mo of combined oil-change volume. No dedicated oil-change
-  // page exists yet; /routine-maintenance is the closest honest match.
-  { source: "/services/oil-change-service", destination: "/routine-maintenance", permanent: true },
-  { source: "/oil-change-services", destination: "/routine-maintenance", permanent: true },
+  // Ranked for ~340/mo of combined oil-change volume. Now that a dedicated
+  // oil-change page exists, these point to it directly.
+  { source: "/services/oil-change-service", destination: "/oil-change", permanent: true },
+  { source: "/oil-change-services", destination: "/oil-change", permanent: true },
   { source: "/services/brake-pads-and-braking-systems", destination: "/brake-services", permanent: true },
   { source: "/brake-pads-and-braking-system", destination: "/brake-services", permanent: true },
   { source: "/services/electrical-repair", destination: "/electrical-system-repairs", permanent: true },
@@ -58,7 +58,7 @@ const GEN_A_REDIRECTS = [
 const LEGACY_BLOG_REDIRECTS = [
   { source: "/2015/06/tire-safety-check-your-tires-for-wear-and-tear", destination: "/tires", permanent: true },
   { source: "/2015/07/7-symptoms-of-worn-out-brakes", destination: "/brake-services", permanent: true },
-  { source: "/2015/07/is-your-check-engine-light-on-here-are-some-causes", destination: "/engine-diagnostics-and-repair", permanent: true },
+  { source: "/2015/07/is-your-check-engine-light-on-here-are-some-causes", destination: "/check-engine-light", permanent: true },
   { source: "/2015/07/general-troubleshooting-guide", destination: "/services", permanent: true },
 ];
 

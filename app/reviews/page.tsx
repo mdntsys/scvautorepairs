@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CTABanner from "@/components/CTABanner";
+import { TESTIMONIALS, RATING } from "@/lib/reviews";
 
 export const metadata: Metadata = {
   title: "Santa Clarita Auto Repair Reviews",
@@ -8,38 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/reviews" },
 };
 
-const reviews = [
-  {
-    name: "Justin P.",
-    stars: 5,
-    text: "The owner Pete is very personable and the pricing is more than fair. I won't take my cars anywhere else in the SCV.",
-  },
-  {
-    name: "Atlas B.",
-    stars: 5,
-    text: "Quick, honest, and affordable. They accommodate your schedule and never push unnecessary repairs. Best shop in Santa Clarita.",
-  },
-  {
-    name: "Julie C.",
-    stars: 5,
-    text: "Pete is our go-to guy for everything automotive. He provides trustworthy, flexible, and efficient services that accommodate our schedule and budget every single time.",
-  },
-  {
-    name: "Stephanie J.",
-    stars: 5,
-    text: "This shop was not only able to find the issue when others couldn't, but also had much more fair pricing. Highly recommended.",
-  },
-  {
-    name: "Charles P.",
-    stars: 5,
-    text: "Great place, great prices. Pete runs an honest shop and the quality of work is top notch every single time.",
-  },
-  {
-    name: "Maria G.",
-    stars: 5,
-    text: "I appreciate how Pete explained everything before doing any work. No surprises, no upsells — just honest repair at a fair price.",
-  },
-];
+const reviews = TESTIMONIALS;
 
 function Stars({ count }: { count: number }) {
   return (
@@ -76,7 +46,7 @@ export default function ReviewsPage() {
       <section className="border-b border-[#1a1a1a] px-6">
         <div className="max-w-7xl mx-auto py-8 flex flex-wrap gap-10">
           {[
-            { stat: "5.0", label: "Average rating" },
+            { stat: RATING.google, label: "Google rating" },
             { stat: "ASE", label: "Certified mechanics" },
             { stat: "3yr", label: "/ 36K mi warranty" },
           ].map((item) => (
@@ -109,7 +79,7 @@ export default function ReviewsPage() {
                   </div>
                   <div>
                     <p className="text-white text-sm font-medium">{review.name}</p>
-                    <p className="text-[#444] text-xs">Verified Customer</p>
+                    <p className="text-[#444] text-xs">Customer</p>
                   </div>
                 </div>
               </div>
@@ -118,7 +88,16 @@ export default function ReviewsPage() {
 
           <div className="mt-12 text-center">
             <p className="text-muted text-sm mb-4">
-              Hundreds of satisfied customers across the Santa Clarita Valley.
+              Trusted by drivers across the Santa Clarita Valley.{" "}
+              <a
+                href={RATING.googleUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:underline"
+              >
+                Read our reviews on Google
+              </a>
+              .
             </p>
             <a
               href="tel:+16612512515"

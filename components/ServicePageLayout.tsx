@@ -2,13 +2,53 @@
 
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 import { BUSINESS, CITY_STATE_ZIP } from "@/lib/business";
 import { BUSINESS_ID } from "@/components/StructuredData";
 
+// Contextual internal links between related services. Before this, service
+// pages only linked out via the shared nav/footer chrome — nothing tied, say,
+// brakes to tires. Keyed by pathname so no page file needs to know about it.
+const SERVICE_LABELS: Record<string, string> = {
+  "/routine-maintenance": "Routine Maintenance",
+  "/oil-change": "Oil Change",
+  "/brake-services": "Brake Repair",
+  "/tires": "Tire Service",
+  "/suspension-and-steering": "Suspension & Steering",
+  "/engine-diagnostics-and-repair": "Engine Diagnostics & Repair",
+  "/check-engine-light": "Check Engine Light",
+  "/transmission-services": "Transmission Repair",
+  "/exhaust-system": "Exhaust & Muffler Repair",
+  "/electrical-system-repairs": "Auto Electrical Repair",
+  "/ac-and-heating": "Car AC & Heating",
+};
+
+const RELATED_SERVICES: Record<string, string[]> = {
+  "/routine-maintenance": ["/oil-change", "/tires"],
+  "/oil-change": ["/routine-maintenance", "/tires"],
+  "/brake-services": ["/tires", "/suspension-and-steering"],
+  "/tires": ["/brake-services", "/suspension-and-steering"],
+  "/suspension-and-steering": ["/tires", "/brake-services"],
+  "/engine-diagnostics-and-repair": ["/check-engine-light", "/electrical-system-repairs"],
+  "/check-engine-light": ["/engine-diagnostics-and-repair", "/transmission-services"],
+  "/transmission-services": ["/engine-diagnostics-and-repair", "/routine-maintenance"],
+  "/exhaust-system": ["/engine-diagnostics-and-repair", "/check-engine-light"],
+  "/electrical-system-repairs": ["/engine-diagnostics-and-repair", "/ac-and-heating"],
+  "/ac-and-heating": ["/electrical-system-repairs", "/routine-maintenance"],
+};
+
 interface FAQ {
   q: string;
   a: string;
+}
+
+interface ContentSection {
+  heading: string;
+  /** One or more paragraphs of body copy. */
+  body: string[];
+  /** Optional bulleted list rendered under the paragraphs. */
+  bullets?: string[];
 }
 
 interface ServicePageLayoutProps {
@@ -17,6 +57,11 @@ interface ServicePageLayoutProps {
   description: string;
   services: string[];
   faqs?: FAQ[];
+  /**
+   * Long-form content blocks rendered between the intro and the services list.
+   * Optional so pages that haven't been expanded yet still render.
+   */
+  sections?: ContentSection[];
 }
 
 export default function ServicePageLayout({
@@ -25,9 +70,11 @@ export default function ServicePageLayout({
   description,
   services,
   faqs,
+  sections,
 }: ServicePageLayoutProps) {
   const pathname = usePathname();
   const pageUrl = `${BUSINESS.url}${pathname}`;
+  const related = RELATED_SERVICES[pathname] ?? [];
 
   // Service + breadcrumb + FAQ markup, derived from the props each service page
   // already passes. This is a client component, but Next still renders it on the
@@ -118,6 +165,47 @@ export default function ServicePageLayout({
             >
               <p className="text-[#bbb] leading-relaxed text-base">{description}</p>
             </motion.div>
+
+            {/* Long-form content sections */}
+            {sections?.map((section, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+              >
+                <h2 className="font-heading font-bold text-2xl tracking-tight text-white mb-4">
+                  {section.heading}
+                </h2>
+                <div className="space-y-4">
+                  {section.body.map((para, j) => (
+                    <p key={j} className="text-[#bbb] leading-relaxed text-base">
+                      {para}
+                    </p>
+                  ))}
+                </div>
+                {section.bullets && section.bullets.length > 0 && (
+                  <ul className="mt-4 space-y-2">
+                    {section.bullets.map((bullet, k) => (
+                      <li key={k} className="flex items-start gap-3 text-[#bbb] text-base">
+                        <svg
+                          className="w-4 h-4 text-accent mt-1 shrink-0"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </motion.div>
+            ))}
 
             {/* Services list */}
             <motion.div
@@ -236,6 +324,32 @@ export default function ServicePageLayout({
                 mechanics using OEM-quality parts.
               </p>
             </motion.div>
+
+            {related.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="bg-[#111111] border border-[#1e1e1e] p-6 rounded-lg"
+              >
+                <h3 className="font-heading font-bold text-base text-white mb-4">
+                  Related Services
+                </h3>
+                <ul className="space-y-2">
+                  {related.map((href) => (
+                    <li key={href}>
+                      <Link
+                        href={href}
+                        className="flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors"
+                      >
+                        <span className="text-accent">›</span>
+                        {SERVICE_LABELS[href] ?? href}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
           </div>
         </div>
       </section>

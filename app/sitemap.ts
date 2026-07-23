@@ -4,8 +4,10 @@ const BASE_URL = "https://www.scvautorepairs.com";
 
 const SERVICE_ROUTES = [
   "/routine-maintenance",
+  "/oil-change",
   "/brake-services",
   "/engine-diagnostics-and-repair",
+  "/check-engine-light",
   "/transmission-services",
   "/suspension-and-steering",
   "/exhaust-system",

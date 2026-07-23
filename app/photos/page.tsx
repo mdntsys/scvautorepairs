@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CTABanner from "@/components/CTABanner";
+import { TESTIMONIALS } from "@/lib/reviews";
 
 export const metadata: Metadata = {
   title: "Our Santa Clarita Auto Repair Shop",
@@ -7,6 +8,10 @@ export const metadata: Metadata = {
     "Photo gallery of SCV Auto Repairs in Santa Clarita, CA. See our shop, our work, and our ASE-certified team in action.",
   alternates: { canonical: "/photos" },
 };
+
+// Julie C., pulled from the shared testimonials source so it can't drift out of
+// sync with the wording on the reviews page again.
+const featuredReview = TESTIMONIALS.find((r) => r.name === "Julie C.")!;
 
 export default function PhotosPage() {
   return (
@@ -68,10 +73,9 @@ export default function PhotosPage() {
               What Our Customers Are Saying
             </h2>
             <blockquote className="text-[#ccc] leading-relaxed italic border-l-2 border-accent pl-4">
-              &ldquo;Pete is our go-to guy for everything automotive. He provides trustworthy,
-              flexible, and efficient services that accommodate our schedule and budget.&rdquo;
+              &ldquo;{featuredReview.text}&rdquo;
             </blockquote>
-            <p className="text-muted text-sm mt-3">— Julie C., Verified Customer</p>
+            <p className="text-muted text-sm mt-3">— {featuredReview.name}, Customer</p>
           </div>
         </div>
       </section>

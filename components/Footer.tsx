@@ -40,7 +40,8 @@ export default function Footer() {
             </Link>
             <p className="text-muted text-sm leading-relaxed mb-4">
               We go the extra mile so you can drive the extra miles. ASE-certified
-              mechanics serving Santa Clarita since day one.
+              mechanics on Soledad Canyon Rd, serving Canyon Country, Santa Clarita,
+              Saugus, Newhall, Valencia, Stevenson Ranch, and Castaic.
             </p>
             <div className="flex items-center gap-2 text-sm">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse shrink-0" />
@@ -139,12 +140,12 @@ export default function Footer() {
           <p className="text-xs text-[#444]">
             Built by{" "}
             <a
-              href="https://sixstarsites.com"
+              href="https://midnitesystems.com"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-muted transition-colors"
             >
-              Six Star Sites
+              Midnite Systems
             </a>
           </p>
         </div>

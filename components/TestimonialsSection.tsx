@@ -3,34 +3,10 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import { TESTIMONIALS } from "@/lib/reviews";
 
-const testimonials = [
-  {
-    name: "Justin P.",
-    text: "The owner Pete is very personable and the pricing is more than fair. I won't take my cars anywhere else in the SCV.",
-    stars: 5,
-  },
-  {
-    name: "Atlas B.",
-    text: "Quick, honest, and affordable service. They accommodate your schedule and never push for unnecessary repairs.",
-    stars: 5,
-  },
-  {
-    name: "Julie C.",
-    text: "Trustworthy and efficient — Pete and his team go out of their way to fit your budget and timeline.",
-    stars: 5,
-  },
-  {
-    name: "Stephanie J.",
-    text: "This shop was not only able to find the issue when others couldn't, but also had much more fair pricing. Highly recommended.",
-    stars: 5,
-  },
-  {
-    name: "Charles P.",
-    text: "Great place, great prices. Pete runs an honest shop and the quality of work is top notch every single time.",
-    stars: 5,
-  },
-];
+// Show the first five on the homepage; the full set lives on /reviews.
+const testimonials = TESTIMONIALS.slice(0, 5);
 
 function Stars({ count }: { count: number }) {
   return (
