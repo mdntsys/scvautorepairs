@@ -35,8 +35,32 @@ export interface Post {
 // Each post file is imported and registered here. Adding a post = one import
 // plus one array entry; nothing else needs to change.
 import summerAc from "@/content/blog/santa-clarita-summer-ac";
+import grapevinePreTrip from "@/content/blog/grapevine-pre-road-trip";
+import oilChangeFrequency from "@/content/blog/santa-clarita-oil-change-frequency";
+import newhallPassBrakes from "@/content/blog/newhall-pass-brakes";
+import checkEngineSmog from "@/content/blog/check-engine-light-smog-santa-clarita";
+import tireHeat from "@/content/blog/santa-clarita-tire-heat";
+import fallCarCare from "@/content/blog/fall-car-care-santa-clarita";
+import gradesTransmission from "@/content/blog/santa-clarita-grades-transmission";
+import grapevineHoliday from "@/content/blog/grapevine-holiday-travel-check";
+import coldBattery from "@/content/blog/cold-mornings-car-battery-santa-clarita";
+import smogGuide from "@/content/blog/smog-check-santa-clarita-guide";
+import newYearCarCare from "@/content/blog/new-year-car-care-santa-clarita";
 
-const ALL_POSTS: Post[] = [summerAc];
+const ALL_POSTS: Post[] = [
+  summerAc,
+  grapevinePreTrip,
+  oilChangeFrequency,
+  newhallPassBrakes,
+  checkEngineSmog,
+  tireHeat,
+  fallCarCare,
+  gradesTransmission,
+  grapevineHoliday,
+  coldBattery,
+  smogGuide,
+  newYearCarCare,
+];
 
 // --- Helpers -------------------------------------------------------------
 
