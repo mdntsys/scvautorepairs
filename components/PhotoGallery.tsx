@@ -23,12 +23,6 @@ const PHOTOS: Photo[] = [
     alt: "SCV Auto Repairs storefront at 20723 Soledad Canyon Rd in Santa Clarita, with a classic red Chevrolet El Camino SS parked out front",
   },
   {
-    src: "/photos/02-street-view.jpg",
-    w: 1024,
-    h: 768,
-    alt: "Street view of SCV Auto Repairs on Soledad Canyon Rd in Canyon Country, Santa Clarita",
-  },
-  {
     src: "/photos/03-service-bays.jpg",
     w: 640,
     h: 330,
