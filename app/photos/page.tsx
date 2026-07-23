@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CTABanner from "@/components/CTABanner";
+import PhotoGallery from "@/components/PhotoGallery";
 import { TESTIMONIALS } from "@/lib/reviews";
 
 export const metadata: Metadata = {
@@ -34,38 +35,7 @@ export default function PhotosPage() {
 
       <section className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
-          {/* Gallery placeholder grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <div
-                key={i}
-                className="aspect-square bg-[#111111] border border-[#1e1e1e] rounded-lg overflow-hidden flex items-center justify-center group"
-              >
-                <svg
-                  className="w-8 h-8 text-[#333] group-hover:text-accent transition-colors"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1}
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center py-10 border border-dashed border-[#262626] rounded-lg">
-            <p className="text-muted text-sm mb-2">
-              Photo gallery coming soon — check back shortly.
-            </p>
-            <p className="text-[#444] text-xs">
-              In the meantime, visit us at 20723 Soledad Canyon Rd, Santa Clarita, CA 91351
-            </p>
-          </div>
+          <PhotoGallery />
 
           {/* Testimonial */}
           <div className="mt-12 bg-[#111111] border border-[#1e1e1e] p-8 rounded-lg">

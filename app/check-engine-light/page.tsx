@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ServicePageLayout from "@/components/ServicePageLayout";
 
 export const metadata: Metadata = {
-  title: "Check Engine Light Diagnosis, Santa Clarita",
+  title: "Check Engine Light, Santa Clarita CA",
   description:
     "Check engine light on? SCV Auto Repairs in Santa Clarita, CA uses pro scan tools to find the real cause on any make. ASE-certified. Call 661-251-2515.",
   alternates: { canonical: "/check-engine-light" },

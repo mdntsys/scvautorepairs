@@ -24,9 +24,7 @@ export default function ContactSection() {
               Get in Touch
             </p>
             <h2 className="font-heading font-extrabold text-4xl md:text-5xl tracking-tighter text-white mb-4">
-              Schedule Your
-              <br />
-              Service Today
+              Get in Touch
             </h2>
             <p className="text-muted text-sm leading-relaxed mb-8 max-w-sm">
               Fill out the form and we&apos;ll reach out within one business day. Prefer to call?

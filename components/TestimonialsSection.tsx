@@ -38,9 +38,10 @@ export default function TestimonialsSection() {
               Customer Reviews
             </p>
             <h2 className="font-heading font-extrabold text-4xl md:text-5xl tracking-tighter text-white">
-              What Our Customers
-              <br />
-              Are Saying
+              {/* Block spans, not <br/> — a bare <br/> adds no whitespace when
+                  the heading text is extracted by non-rendering crawlers. */}
+              <span className="block">What Our Customers</span>{" "}
+              <span className="block">Are Saying</span>
             </h2>
           </div>
           <Link

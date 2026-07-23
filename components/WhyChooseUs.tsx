@@ -49,11 +49,11 @@ export default function WhyChooseUs() {
               Why SCV Auto Repairs
             </p>
             <h2 className="font-heading font-extrabold text-4xl md:text-5xl tracking-tighter text-white mb-6">
-              Honest work.
-              <br />
-              Fair prices.
-              <br />
-              <span className="text-muted">Every time.</span>
+              {/* Block spans, not <br/> — keeps the three-line look but yields
+                  real whitespace when the heading is extracted without CSS. */}
+              <span className="block">Honest work.</span>{" "}
+              <span className="block">Fair prices.</span>{" "}
+              <span className="block text-muted">Every time.</span>
             </h2>
             <p className="text-muted leading-relaxed mb-8">
               Pete and the team at SCV Auto Repairs have built a reputation on doing the

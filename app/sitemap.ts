@@ -16,8 +16,6 @@ const SERVICE_ROUTES = [
   "/tires",
 ];
 
-// /photos is deliberately excluded — it currently renders an empty placeholder
-// grid with "coming soon" copy. Add it back once it has real photos.
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
@@ -51,6 +49,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 0.6,
+    },
+    {
+      url: `${BASE_URL}/photos`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.5,
     },
   ];
 }
