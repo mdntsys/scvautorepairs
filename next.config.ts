@@ -77,6 +77,18 @@ const PHANTOM_PREFIX_REDIRECT = [
  *   /accessibility-statement — same
  *   /vehicle-care-guide, /sitemap, date + category + tag archives, WordPress cruft
  */
+// Baseline security headers. Not a direct ranking factor, but a standard trust
+// and quality signal, and cheap to add. HSTS is already set at the Vercel edge.
+const SECURITY_HEADERS = [
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
+  },
+];
+
 const nextConfig: NextConfig = {
   async redirects() {
     return [
@@ -85,6 +97,9 @@ const nextConfig: NextConfig = {
       ...LEGACY_BLOG_REDIRECTS,
       ...PHANTOM_PREFIX_REDIRECT,
     ];
+  },
+  async headers() {
+    return [{ source: "/:path*", headers: SECURITY_HEADERS }];
   },
 };
 

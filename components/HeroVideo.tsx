@@ -10,12 +10,16 @@ export default function HeroVideo() {
     // Full-bleed on normal screens, but capped so tall monitors don't stretch
     // the hero into a wall of empty space above the fold.
     <section className="relative min-h-[min(100svh,880px)] flex items-center overflow-hidden">
-      {/* Video background */}
+      {/* Video background. The poster paints instantly (the video is decorative
+          and sits under a 65% black overlay), so there's no black flash while
+          the muted loop loads. */}
       <video
         autoPlay
         loop
         muted
         playsInline
+        preload="metadata"
+        poster="/hero-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover"
         src="/scvautorepairs_hero_video.mp4"
       />
@@ -31,10 +35,12 @@ export default function HeroVideo() {
 
           {/* Left — hero text */}
           <div>
-            {/* Badge */}
+            {/* Badge. Slide-only entrance (no opacity fade) so the above-the-fold
+                hero text is painted at full opacity in the server HTML. Hiding it
+                with opacity:0 delayed the LCP element until JS hydrated. */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ x: -20 }}
+              animate={{ x: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="inline-flex items-center gap-2 border border-accent/40 bg-accent/10 px-3 py-1.5 rounded text-sm text-accent font-medium mb-6"
             >
@@ -42,10 +48,11 @@ export default function HeroVideo() {
               ASE-Certified Mechanics — Santa Clarita, CA
             </motion.div>
 
-            {/* Headline */}
+            {/* Headline — the LCP element. Slide-only, no opacity fade, so it
+                paints immediately instead of waiting on hydration. */}
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ y: 20 }}
+              animate={{ y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-heading font-extrabold text-5xl md:text-6xl xl:text-7xl tracking-tighter leading-none text-white mb-6"
             >
@@ -71,8 +78,8 @@ export default function HeroVideo() {
 
             {/* Subheading */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ y: 20 }}
+              animate={{ y: 0 }}
               transition={{ duration: 0.6, delay: 0.35 }}
               className="text-[#a0a0a0] text-base md:text-lg max-w-md leading-relaxed mb-8"
             >
@@ -83,8 +90,8 @@ export default function HeroVideo() {
 
             {/* CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ y: 20 }}
+              animate={{ y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
               className="flex flex-wrap gap-3"
             >
